@@ -12,7 +12,7 @@ const DownloadButton = ({ label, color = "primary", className = "" }) => {
       className={`flex items-center gap-2 rounded ${BACKGROUND_DOWNLOAD_BUTTON[color]} px-3 py-2 ${className}`}
     >
       <h6>{label}</h6>
-      <SvgSPrite icon="arrow_down" size="small" />
+      <SvgSPrite icon="arrow_down" className="icon_small" />
     </div>
   );
 };

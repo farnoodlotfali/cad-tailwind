@@ -160,7 +160,9 @@ export default function Home() {
           <div className="rounded-card-border bg-primary-700 p-6">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <div className="flex items-center justify-center gap-2 md:justify-start">
-                {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
+                {!isTablet && (
+                  <SvgSPrite icon="cardboard_box" className="icon_large" />
+                )}
                 <h4 className="font-bold">صــاحـب بــار</h4>
               </div>
               <div className="order-3 flex justify-center md:order-2 md:justify-end">
@@ -180,7 +182,7 @@ export default function Home() {
           <div className="rounded-card-border bg-secondary-900 p-6">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <div className="flex items-center justify-center gap-2 md:justify-start">
-                {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
+                {!isTablet && <SvgSPrite icon="steering_wheel" className="icon_large" />}
                 <h4 className=" font-bold">رانــنــده</h4>
               </div>
               <div className="order-3 flex justify-center md:order-2 md:justify-end">
@@ -214,8 +216,7 @@ export default function Home() {
                 <div className="flex w-fit rounded-full bg-primary-light p-4 group-hover:bg-primary-dark">
                   <SvgSPrite
                     icon={item.icon}
-                    size="extraLarge"
-                    className="fill-primary-700 group-hover:fill-white "
+                    className="icon_extra_large fill-primary-700 group-hover:fill-white "
                   />
                 </div>
                 <h4 className="font-bold group-hover:text-white">
@@ -306,7 +307,7 @@ export default function Home() {
                     className="h-full"
                   />
                 </div>
-                <h5 className="float-none pt-3 flex flex-wrap justify-center whitespace-nowrap text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
+                <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
                   <span> دیگه نگران </span>
                   <span> پـیـداشـدن </span>
                   <span> بـــار نـبـاش </span>
