@@ -1,5 +1,5 @@
 <svg width="0" height="0" class="hidden">
-  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 12" id="chevron_down">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 12" id="chevron_down">
     <path id="chevron_down" d="M1 1L9.05 9.47369C9.8385 10.3037 11.1615 10.3037 11.95 9.47369L20 1" stroke="black" stroke-width="2" stroke-linecap="round"></path>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32" id="arrow_right">

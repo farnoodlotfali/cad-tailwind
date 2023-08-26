@@ -46,44 +46,8 @@
   .text-align-last-justify {
     text-align-last: justify;
   }
-  .icon_extra_large {
-    min-width: 45px;
-    width: 45px;
-    min-height: 45px;
-    height: 45px;
-  }
-  .icon_large {
-    min-width: 32px;
-    width: 32px;
-    min-height: 32px;
-    height: 32px;
-  }
-  .icon_medium {
-    min-width: 24px;
-    width: 24px;
-    min-height: 24px;
-    height: 24px;
-  }
-  .icon_small {
-    min-width: 16px;
-    width: 16px;
-    min-height: 16px;
-    height: 16px;
-  }
 }
 
-@layer components {
-  .select2-dropdown {
-    @apply rounded-b-lg shadow-md;
-  }
-  .select2-search {
-    @apply rounded border border-gray-300;
-  }
-  .select2-results__group {
-    @apply text-lg font-bold text-gray-900;
-  }
-  /* ... */
-}
 * {
   margin: 0;
   padding: 0;

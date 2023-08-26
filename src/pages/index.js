@@ -1,5 +1,4 @@
 import Image from "next/image";
-import imageURL from "../../public/Assets/images/driverApp.svg";
 import { SvgSPrite } from "@/Components/SvgSPrite";
 import { BREAK_POINTS } from "../../constants/Const";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -8,7 +7,8 @@ import Link from "next/link";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { useWindowWidth } from "@/hooks/useWindowWidth";
 
 // paddding= p-10
 
@@ -50,6 +50,17 @@ export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const isTablet = useMediaQuery(`(max-width: ${BREAK_POINTS.md})`);
 
+  //
+  const [active, setActive] = useState(null);
+
+  const handleToggle = (val) => {
+    if (active === val) {
+      setActive(null);
+    } else {
+      setActive(val);
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/*  */}
@@ -58,7 +69,12 @@ export default function Home() {
           <div className="flex items-center justify-between px-6 py-6 md:px-16 ">
             <div className="flex items-center gap-x-4">
               <Link href="/" prefetch={false} style={{ display: "flex" }}>
-                <Image src="./chador_logo.svg" width={40} height={40} />
+                <Image
+                  src="./chador_logo.svg"
+                  width={40}
+                  height={40}
+                  alt="chador_logo"
+                />
               </Link>
               <div className=" bg-gray-400 md:h-10 md:w-[1px] " />
               <h1 className="whitespace-nowrap text-xl font-bold ">
@@ -160,9 +176,7 @@ export default function Home() {
           <div className="rounded-card-border bg-primary-700 p-6">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <div className="flex items-center justify-center gap-2 md:justify-start">
-                {!isTablet && (
-                  <SvgSPrite icon="cardboard_box" className="icon_large" />
-                )}
+                {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
                 <h4 className="font-bold">صــاحـب بــار</h4>
               </div>
               <div className="order-3 flex justify-center md:order-2 md:justify-end">
@@ -182,7 +196,7 @@ export default function Home() {
           <div className="rounded-card-border bg-secondary-900 p-6">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <div className="flex items-center justify-center gap-2 md:justify-start">
-                {!isTablet && <SvgSPrite icon="steering_wheel" className="icon_large" />}
+                {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
                 <h4 className=" font-bold">رانــنــده</h4>
               </div>
               <div className="order-3 flex justify-center md:order-2 md:justify-end">
@@ -211,12 +225,13 @@ export default function Home() {
             return (
               <div
                 key={i}
-                className="lg:w-3/10 md:w-4/10 group flex w-full flex-col items-center justify-center gap-3 rounded-card-border bg-white p-10 text-center transition-all hover:bg-primary-700"
+                className="group flex w-full flex-col items-center justify-center gap-3 rounded-card-border bg-white p-10 text-center transition-all hover:bg-primary-700 md:w-4/10 lg:w-3/10"
               >
                 <div className="flex w-fit rounded-full bg-primary-light p-4 group-hover:bg-primary-dark">
                   <SvgSPrite
                     icon={item.icon}
-                    className="icon_extra_large fill-primary-700 group-hover:fill-white "
+                    size="extraLarge"
+                    className="fill-primary-700 group-hover:fill-white "
                   />
                 </div>
                 <h4 className="font-bold group-hover:text-white">
@@ -258,6 +273,7 @@ export default function Home() {
                     src="./Assets/images/Ad.svg"
                     width={280}
                     height={400}
+                    alt="Ad"
                   />
                 </div>
               </div>
@@ -282,6 +298,7 @@ export default function Home() {
                     src="./Assets/images/loan.svg"
                     width={400}
                     height={1}
+                    alt="loan"
                   />
                 </div>
               </div>
@@ -305,6 +322,7 @@ export default function Home() {
                     width={400}
                     height={100}
                     className="h-full"
+                    alt="screen2"
                   />
                 </div>
                 <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
@@ -336,6 +354,7 @@ export default function Home() {
                     src="./Assets/images/screen3.svg"
                     width={250}
                     height={400}
+                    alt="screen3"
                   />
                 </div>
               </div>
@@ -343,9 +362,197 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/*  */}
+      <div className="p-10">
+        <h3 className="mb-10 text-center font-bold text-primary-700">
+          ســوالات مـتـداول
+        </h3>
+
+        <div className="grid grid-cols-6 gap-5">
+          <div className="col-span-6 flex flex-col gap-5 md:col-span-5">
+            {FAQ_ITEMS.map((item, i) => {
+              return (
+                <AccordionItem
+                  key={i}
+                  active={active}
+                  handleToggle={handleToggle}
+                  answer={item.answer}
+                  question={item.question}
+                />
+              );
+            })}
+          </div>
+          {!isTablet && (
+            <div className="col-span-1 ">
+              <div className="h-full rounded-lg bg-secondary-900"></div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/*  */}
+      <div
+        className="  relative flex items-center overflow-hidden bg-primary-700 px-10 py-16 text-white
+        before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 
+        after:absolute after:bottom-[-125px] after:right-[-100px] after:h-[200px] after:w-[200px] after:rounded-full after:border-[40px] after:border-solid after:border-primary-600
+        "
+      >
+        <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5 px-10 text-center md:flex-row md:text-start">
+          <div className="">
+            <h4 className="mb-2 text-3xl font-bold">
+              هنوز برای استفاده از چـادرمـلـو تردید داریــد؟!
+            </h4>
+            <h6 className="text-xl font-light">
+              شما می‌تـوانید با مشخص کردن مبدا و مقصد و وزن بار خود تخمین هزینه
+              چـادرمـلـو را در لحظه مشاهده کنید.
+            </h6>
+          </div>
+
+          <Link prefetch={false} href="/costimate">
+            <div
+              role="button"
+              className="h-fit w-40 whitespace-nowrap rounded bg-primary-dark p-3 text-center"
+            >
+              تخمین هزینه بار
+            </div>
+          </Link>
+        </div>
+      </div>
+
+      {/*  */}
+      <div className="bg-secondary-900 p-10">
+        <div className="flex flex-col items-center justify-center gap-5 md:flex-row md:justify-between">
+          <div className="w-full">
+            <Image
+              src={"./chador_logo.svg"}
+              alt="chador_logo"
+              width={160}
+              height={160}
+              title="chador_logo"
+              className="mx-auto md:mx-0"
+            />
+          </div>
+
+          <div className="flex w-full justify-around text-center">
+            <div className=" flex flex-col gap-7 text-white">
+              <Link href="/faq" prefetch={false}>
+                سوالات متداول
+              </Link>
+              <Link href="/privacy" prefetch={false}>
+                قوانین و مقررات
+              </Link>
+            </div>
+            <div className=" flex flex-col gap-7 text-white">
+              <Link href="/about" prefetch={false}>
+                درباره‌ما
+              </Link>
+              <Link href="/contact" prefetch={false}>
+                تماس با ما
+              </Link>
+            </div>
+          </div>
+
+          <div className="w-full">
+            <div className="mr-auto w-fit rounded-lg bg-white p-4">
+              <Image
+                src={"./Assets/images/namad.svg"}
+                alt="namad"
+                width={300}
+                height={160}
+                title="namad"
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr className="my-5 border-gray-500" />
+
+        <div className="flex flex-col items-center justify-between gap-5 text-center text-white md:flex-row md:text-start">
+          <h5 className="">
+            تمامی حقوق به شرکت <strong>چادرملو</strong> تعلق دارد
+          </h5>
+
+          <a href="mailto:info@chadormalu.com">info@chadormalu.com</a>
+        </div>
+      </div>
     </div>
   );
 }
+
+const AccordionItem = ({ active, question, answer, handleToggle }) => {
+  const contentEl = useRef(null);
+
+  const { windowWidth } = useWindowWidth(1024);
+
+  const height = useMemo(
+    () => contentEl?.current?.scrollHeight,
+    [contentEl?.current?.scrollHeight, windowWidth]
+  );
+
+  const isOpen = useMemo(() => active === question, [active]);
+  return (
+    <div className=" ">
+      <button
+        className={`group flex w-full cursor-pointer flex-col items-center justify-between rounded-t-lg bg-white px-5 py-4 transition-all sm:flex-row ${
+          !isOpen && "rounded-b-lg duration-1000"
+        }`}
+        onClick={() => handleToggle(question)}
+      >
+        <h4 className=" m-0 mb-2 text-lg font-medium sm:mb-0 md:text-inherit">
+          {question}
+        </h4>
+        <div
+          className={` ${
+            isOpen ? " -rotate-180" : ""
+          } bg-transparent transition-all duration-500`}
+        >
+          <span className="m-auto flex">
+            <SvgSPrite icon="chevron_down" size="small" />
+          </span>
+        </div>
+      </button>
+      <div
+        className={` ${
+          isOpen ? " h-auto" : "h-0 "
+        }  relative overflow-hidden rounded-b-lg bg-white transition-all duration-500`}
+        style={{ height: isOpen ? height : 0 }}
+      >
+        <div ref={contentEl} className="px-5 pb-5 pt-1">
+          {answer}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FAQ_ITEMS = [
+  {
+    question: "فرآیند ثبت‌نام در چادرملو به عنوان “راننده” چگونه است؟",
+    answer: "عالی",
+  },
+  {
+    question: "کارمزد بار چگونه محاسبه می‌شود؟",
+    answer: "عالی",
+  },
+  {
+    question: "مزیت اصلی سامانه شما چه چیزی است؟",
+    answer: "عالی",
+  },
+  {
+    question:
+      "نسخه اندروید گوشی من پایین هست، آیا این اپلیکیشن روی اون نصب میشه؟",
+    answer: "عالی",
+  },
+  {
+    question: "نقش کیف‌پول در اپلیکیشن چیه؟",
+    answer: "عالی",
+  },
+  {
+    question: "فرآیند ثبت‌نام در چادرملو به عنوان “صاحب‌بار” چگونه است؟",
+    answer: "عالی",
+  },
+];
 
 const FEATURES_ITEMS = [
   {
