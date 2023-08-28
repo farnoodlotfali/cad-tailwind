@@ -1,11 +1,14 @@
 import { PADDING_LAYOUT } from "@/Layouts/PanelLayout";
 import { SvgSPrite } from "./SvgSPrite";
+import { enToFaNumber } from "@/Utility/utils";
 
 const FEATURES_ITEMS = [
   {
     icon: "semi_truck",
-    title: "25,000+ ناوگان",
-    text: "چادرملو با دسترسی به بیش از 25 هزار ناوگان به عنوان بزرگترین سامانه هوشمند حمل و نقل بار حمل و نقل در کشور است.",
+    title: enToFaNumber("25,000+ ناوگان"),
+    text: enToFaNumber(
+      "چادرملو با دسترسی به بیش از 25 هزار ناوگان به عنوان بزرگترین سامانه هوشمند حمل و نقل بار حمل و نقل در کشور است."
+    ),
   },
   {
     icon: "internet",

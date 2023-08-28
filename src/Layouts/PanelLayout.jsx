@@ -161,8 +161,10 @@ const Header = ({ toggleDrawer }) => {
               alt="chador_logo"
             />
           </Link>
-          <div className=" bg-gray-400 md:h-10 md:w-[1px] " />
-          <h1 className="whitespace-nowrap text-xl font-bold ">چـادرمـلـو</h1>
+          <div className=" h-4 w-[1px] bg-gray-400 md:h-7 " />
+          <Link href="/" prefetch={false}>
+            <h1 className="whitespace-nowrap text-xl font-bold ">چـادرمـلـو</h1>
+          </Link>
         </div>
         {isTablet ? (
           <div className="">

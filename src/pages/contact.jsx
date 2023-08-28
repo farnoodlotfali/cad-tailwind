@@ -75,7 +75,7 @@ const Contact = () => {
       </Head>
 
       <div className={`bg-white py-20 ${PADDING_LAYOUT}`}>
-        <h3 className="text-3.2xl mb-3 mt-16 text-center font-bold text-primary-700">
+        <h3 className="mb-3 mt-16 text-center text-3.2xl font-bold text-primary-700">
           تـمـاس بـامـا
         </h3>
         <h5 className="mb-14 text-center md:text-2xl">
@@ -127,14 +127,15 @@ const Contact = () => {
           </div>
           <div className="col-span-2 flex flex-col md:col-span-1">
             {isTablet && (
-              <div className="text-3.2xl my-8 text-center font-bold text-primary-700">
+              <div className="my-8 text-center text-3.2xl font-bold text-primary-700">
                 دفـتـر مـرکـزی
               </div>
             )}
 
             <div className="flex flex-wrap justify-between">
               <h3 className="float-right w-full text-base md:w-fit ">
-                خیابان دکتر فاطمی، خیابان باباطاهر، کوچه کیوان، پلاک 19
+                خیابان دکتر فاطمی، خیابان باباطاهر، کوچه کیوان، پلاک{" "}
+                {enToFaNumber("19")}
               </h3>
               <a
                 href="tel:+02188978284"

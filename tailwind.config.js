@@ -57,6 +57,8 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-radial": `-webkit-radial-gradient(50% 0%, circle closest-corner, transparent 0, transparent 200px, #00617c 201px, #00617c 102px)`,
         pattern: "url('../../public/Assets/images/Pattern.svg')",
+        steering_wheel: "url('../../public/Assets/images/bg_steering_wheel.svg')",
+        cardboard_box: "url('../../public/Assets/images/bg_cardboard_box.svg')",
       },
       borderRadius: {
         "card-border": "25px",

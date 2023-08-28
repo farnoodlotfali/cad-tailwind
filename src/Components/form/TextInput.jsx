@@ -4,14 +4,21 @@ const TextInput = (props) => {
   const [focused, setFocused] = useState(false);
   const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
+
   return (
     <div>
       <label
         htmlFor={props?.id || props?.name}
         className={`relative block rounded-[5px] border-2 
-            border-primary-light p-4 focus:border-primary-700 ${
-              !!props?.error && "border-red-500 focus:border-red-500 "
-            } ${props?.labelClassName || ""}`}
+             p-4 
+            ${
+              !!props?.error
+                ? "border-red-500"
+                : focused
+                ? "border-primary-700"
+                : "border-primary-light"
+            } 
+            ${props?.labelClassName || ""}`}
       >
         {!!props?.error && (
           <div
@@ -26,9 +33,9 @@ const TextInput = (props) => {
           id={props?.id || props?.name}
           type={props?.type}
           placeholder={props?.placeholder}
+          {...props?.register}
           onFocus={onFocus}
           onBlur={onBlur}
-          {...props?.register}
           className={`w-full ${props?.inputClassName || ""}`}
         />
       </label>

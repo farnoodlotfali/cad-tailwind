@@ -12,6 +12,7 @@ import Features from "@/Components/Features";
 import Head from "next/head";
 import FAQList from "@/Components/FAQList";
 import PanelLayout, { PADDING_LAYOUT } from "@/Layouts/PanelLayout";
+import { enToFaNumber } from "@/Utility/utils";
 
 // paddding= p-10
 
@@ -41,57 +42,7 @@ const Home = () => {
       </Head>
 
       <div className="min-h-screen">
-        {/*  */}
-        <div className={`relative `}>
-          <Swiper
-            slidesPerView={1}
-            dir="rtl"
-            loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay]}
-            onSlideChange={(e) => setActiveSlide(e.realIndex)}
-            onSwiper={(e) => setActiveSlide(e.realIndex)}
-            className="h-[600px] "
-          >
-            {HERO_SLIDES.map((item) => {
-              return (
-                <SwiperSlide key={item.title}>
-                  <div
-                    className={`grid grid-cols-12 items-center gap-4 ${item.bgColor} h-full py-10 pt-28 text-white ${PADDING_LAYOUT}`}
-                  >
-                    <div className="col-span-12 flex flex-col gap-3 text-center md:col-span-5 md:text-justify">
-                      <h1 className="md:text-align-last-justify font-extrabold">
-                        یه تیتر جذاب و چند کلمه‌ای
-                      </h1>
-                      <h4 className="text-base md:text-inherit">
-                        توضیح کوتاه و مختصر در مورد تیتر و ترغیب برای کلیک بر
-                        روی دکمه و دعوت به اقدام
-                      </h4>
-                      <DownloadButton
-                        label={`دانلود اپ ${item.title}`}
-                        className="mx-auto mt-2 w-fit py-3 md:mx-0 md:mt-5 "
-                        color={item.color}
-                      />
-                    </div>
-                    <div className="relative col-span-12 h-72 md:col-span-6 md:col-start-7 md:h-full">
-                      <Image
-                        src={`./Assets/images/${item.img}`}
-                        fill
-                        priority
-                        title="Mobile App Screens"
-                        alt="mobile app screens"
-                        className="mx-auto !w-fit md:mx-0 md:mr-auto"
-                      />
-                    </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
+        <Banner />
 
         <AboutApp />
 
@@ -107,6 +58,68 @@ const Home = () => {
   );
 };
 
+const Banner = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+  return (
+    <div className={`relative `}>
+      <Swiper
+        slidesPerView={1}
+        dir="rtl"
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
+        onSlideChange={(e) => setActiveSlide(e.realIndex)}
+        onSwiper={(e) => setActiveSlide(e.realIndex)}
+        className="h-[670px] xs:h-[600px] "
+      >
+        {HERO_SLIDES.map((item) => {
+          return (
+            <SwiperSlide key={item.title}>
+              <div
+                className={`relative grid grid-cols-12 items-center gap-4 ${item.bgColor} h-full py-10 pt-28 text-white ${PADDING_LAYOUT}`}
+              >
+                <div
+                  className={`bg-${item.color}-dark absolute right-[200px] top-[33px] w-fit rounded-md px-3 py-1 text-[9px] md:right-[64px] md:top-[73px] md:text-base lg:right-[270px] lg:top-[28px] `}
+                >
+                  {item.title}
+                </div>
+
+                <div className="col-span-12 flex flex-col gap-3 text-center md:col-span-5 md:text-justify">
+                  <h1 className="md:text-align-last-justify font-extrabold">
+                    یه تیتر جذاب و چند کلمه‌ای
+                  </h1>
+                  <h4 className="text-base md:text-inherit">
+                    توضیح کوتاه و مختصر در مورد تیتر و ترغیب برای کلیک بر روی
+                    دکمه و دعوت به اقدام
+                  </h4>
+                  <DownloadButton
+                    label={`دانلود اپ ${item.title}`}
+                    className="mx-auto mt-2 w-fit py-3 md:mx-0 md:mt-5 "
+                    color={item.color}
+                  />
+                </div>
+                <div className="relative col-span-12 h-72 md:col-span-6 md:col-start-7 md:h-full">
+                  <Image
+                    src={`./Assets/images/${item.img}`}
+                    fill
+                    priority
+                    title="Mobile App Screens"
+                    alt="mobile app screens"
+                    className="mx-auto !w-fit md:mx-0 md:mr-auto"
+                  />
+                </div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
+};
+
 const AboutApp = () => {
   const isTablet = useMediaQuery(`(max-width: ${BREAK_POINTS.md})`);
   return (
@@ -119,20 +132,19 @@ const AboutApp = () => {
         </h2>
         <div className=" bg-primary-400 md:h-28 md:w-[2px] " />
         <p className="text-justify leading-8 md:leading-7">
-          شرکت معدنی و صنعتی چادرملو در خرداد ماه 1371 تحت شماره 2257 در دفتر
-          ثبت شرکتهای شهرستان یزد به ثبت رسیده است. سپس به موجب مصوبه مجمع عمومی
-          فوق العاده مورخ 16/8/1377 مرکز شرکت به تهران منتقل و به شماره 145857
-          در اداره کل ثبت شرکتها و موسسات غیر تجاری تهران به ثبت رسیده است.{" "}
-          <br /> دفتر مرکزی شرکت در تهران، خیابان ولیعصر بالاتر از ظفر، بلوار
-          اسفندیار، پلاک 66 واقع است و شرکت فاقد شعبه می باشد. مجتمع معدنی و
-          صنعتی چادرملو در استان یزد، 180 کیلومتری شمال شرقی شهر یزد، حاشیه کویر
-          ساغند قرار دارد.
+          {enToFaNumber(
+            "شرکت معدنی و صنعتی چادرملو در خرداد ماه 1371 تحت شماره 2257 در دفتر ثبت شرکتهای شهرستان یزد به ثبت رسیده است. سپس به موجب مصوبه مجمع عمومی فوق العاده مورخ 16/8/1377 مرکز شرکت به تهران منتقل و به شماره 145857 در اداره کل ثبت شرکتها و موسسات غیر تجاری تهران به ثبت رسیده است."
+          )}{" "}
+          <br />
+          {enToFaNumber(
+            "دفتر مرکزی شرکت در تهران، خیابان ولیعصر بالاتر از ظفر، بلوار اسفندیار، پلاک 66 واقع است و شرکت فاقد شعبه می باشد. مجتمع معدنی و صنعتی چادرملو در استان یزد، 180 کیلومتری شمال شرقی شهر یزد، حاشیه کویر ساغند قرار دارد."
+          )}
         </p>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 text-white md:grid-cols-2">
-        <div className="rounded-card-border bg-primary-700 p-6">
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="rounded-card-border bg-primary-700 p-6 md:bg-none bg-cardboard_box bg-auto bg-bottom bg-no-repeat">
+          <div className="grid grid-cols-1 md:gap-3 gap-6 md:grid-cols-2">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
               <h4 className="font-bold">صــاحـب بــار</h4>
@@ -141,7 +153,7 @@ const AboutApp = () => {
               <DownloadButton label={"دانلود اپ صاحب بار"} />
             </div>
             <div className="order-2 md:order-3 md:col-span-2">
-              <div className=" text-justify" role="p">
+              <div className=" text-justify font-light leading-8" role="p">
                 تجار، بازرگانان ترخیص کاران ،کارخانجات واحدهای صنعتی و تولیدی
                 معادن شرکتها، سازمانها و اشخاص میتوانند در سامانه حمل بار
                 بارستان کلیه محموله های خود را به راحتی با بهترین قیمت و در
@@ -151,8 +163,8 @@ const AboutApp = () => {
           </div>
         </div>
 
-        <div className="rounded-card-border bg-secondary-900 p-6">
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="rounded-card-border bg-secondary-900 p-6 md:bg-none bg-steering_wheel bg-auto bg-bottom bg-no-repeat ">
+          <div className="grid grid-cols-1 md:gap-3 gap-6 md:grid-cols-2">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
               <h4 className=" font-bold">رانــنــده</h4>
@@ -161,7 +173,7 @@ const AboutApp = () => {
               <DownloadButton label={"دانلود اپ راننده"} color="secondary" />
             </div>
             <div className="order-2 md:order-3 md:col-span-2">
-              <div className=" text-justify" role="p">
+              <div className=" text-justify font-light leading-8" role="p">
                 رانندگان کامیون تریلی و کلیه ماشینهای سنگین با استفاده از
                 اپلیکیشن در هر زمان و هر مکان میتوانند از میان هزاران بار اعلام
                 شده در سراسر ایران مسیر دلخواه و محموله مناسب با کامیون خود را
@@ -186,23 +198,24 @@ const AppMobileScreens = () => {
         <div className="col-span-12 lg:col-span-5">
           <div
             className=" relative h-full overflow-hidden rounded-card-border bg-primary-700
-      px-6 pt-6 text-white before:absolute before:bottom-[-170px] before:right-[-125px] 
-      before:h-[300px] before:w-[300px] before:rounded-full before:border-[60px] before:border-solid
+      px-6 pt-6 text-white before:absolute md:before:bottom-[-170px] before:bottom-[-110px] md:before:right-[-125px] before:right-[-110px] 
+      md:before:h-[300px] before:h-[200px] md:before:w-[300px] before:w-[200px] before:rounded-full md:before:border-[60px] before:border-[40px] before:border-solid
        before:border-primary-600 "
           >
-            <div className="relative z-10 h-full">
-              <div className="float-right flex flex-col gap-4">
-                <h5 className="text-center text-2xl font-bold md:text-start md:text-4xl">
-                  ثبت آگهی {!isTablet && <br />} راحت و سریع!
+            <div className="relative z-10 flex h-full gap-4 md:block">
+              <div className="float-right inline-block md:flex flex-col gap-4">
+                <h5 className=" flex flex-col whitespace-nowrap font-bold xs:text-2xl md:text-start md:text-4xl">
+                  <span> ثبت آگهی </span>
+                  <span> راحت و سریع! </span>
                 </h5>
-                <div className="mb-3 h-fit w-fit self-center rounded bg-primary-dark px-2 py-1 md:mb-0 md:self-end">
+                <div className="mb-3 mt-1 md:mt-0 mr-auto h-fit w-fit self-center rounded bg-primary-dark px-2 py-1 text-[9px] md:mb-0 md:mr-0 md:self-end md:text-base">
                   صاحب بار
                 </div>
               </div>
-              <div className="relative float-left flex h-full items-baseline ">
+              <div className="relative float-left mt-auto">
                 <Image
                   src="./Assets/images/Ad.svg"
-                  width={280}
+                  width={250}
                   height={400}
                   alt="Ad"
                 />
@@ -213,13 +226,13 @@ const AppMobileScreens = () => {
         <div className="col-span-12 lg:col-span-7">
           <div
             className=" relative h-full overflow-hidden rounded-card-border bg-gray-50
-      px-6 before:absolute before:bottom-[-190px] before:right-[-162px] before:top-auto
-      before:h-full before:w-[300px] before:rounded-full before:border-[60px]
-      before:border-solid before:border-stone-200 md:before:bottom-0 md:before:right-[-162px]
-      md:before:top-0 "
+      px-6 before:absolute before:bottom-0 before:left-[-118px] before:right-auto
+      before:top-[-124px] before:h-full before:w-[200px] before:rounded-full before:border-[40px] before:border-solid
+      before:border-stone-200 md:before:bottom-0 md:before:left-0 md:before:right-[-162px] md:before:top-0 md:before:w-[300px]
+      md:before:border-[60px] "
           >
-            <div className="relative z-10 mr-auto flex h-full w-full flex-col-reverse items-center justify-between gap-4 md:w-4/5 md:flex-row ">
-              <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
+            <div className="relative z-10 mr-auto flex h-full w-full flex-col items-center justify-between gap-4 md:w-4/5 md:flex-row ">
+              <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-lg font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
                 <span>هـرلـحـظه از </span>
                 <span> وضعیت بـار </span>
                 <span>بـاخـبـر باش </span>
@@ -235,29 +248,6 @@ const AppMobileScreens = () => {
               </div>
             </div>
           </div>
-          {/* <div
-            className=" relative h-full overflow-hidden rounded-card-border bg-gray-50
-      px-6 pt-6  before:absolute before:bottom-auto before:left-[-162px] before:right-auto before:top-[-190px]
-       before:h-full before:w-[300px] before:rounded-full before:border-[60px]
-      before:border-solid before:border-stone-200 md:before:bottom-0 md:before:left-auto md:before:right-[-162px]
-       md:before:top-0 "
-          >
-            <div className="relative z-10 mr-auto flex h-full w-full flex-col flex-wrap items-center justify-center md:w-4/5 md:flex-row md:justify-between ">
-              <h5 className="float-none flex flex-wrap justify-center text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl ">
-                <span>هـرلـحـظه از </span>
-                <span> وضعیت بـار </span>
-                <span>بـاخـبـر باش </span>
-              </h5>
-              <div className="relative float-none mt-auto md:float-left ">
-                <Image
-                  src="./Assets/images/loan.svg"
-                  width={400}
-                  height={1}
-                  alt="loan"
-                />
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
 
@@ -265,10 +255,10 @@ const AppMobileScreens = () => {
         <div className="order-2 col-span-12 lg:order-1 lg:col-span-7">
           <div
             className=" relative h-full overflow-hidden rounded-card-border bg-gray-50
-      px-6 before:absolute before:bottom-[-190px] before:left-[-162px] before:top-auto
-      before:h-full before:w-[300px] before:rounded-full before:border-[60px]
+      px-6 before:absolute before:bottom-auto before:left-[50%] before:top-[50%]
+      before:h-full before:w-[230px] before:-translate-x-1/2 before:rounded-full before:border-[60px]
       before:border-solid before:border-stone-200 md:before:bottom-0 md:before:left-[-162px]
-      md:before:top-0 "
+      md:before:top-0 md:before:w-[300px] md:before:-translate-x-0"
           >
             <div className="relative z-10 ml-auto flex h-full w-full flex-col-reverse items-center justify-between gap-4 md:w-4/5 md:flex-row ">
               <div className="relative float-none h-full md:float-left">
@@ -280,7 +270,7 @@ const AppMobileScreens = () => {
                   alt="screen2"
                 />
               </div>
-              <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-2xl font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
+              <h5 className="float-none flex flex-wrap justify-center gap-1 whitespace-nowrap pt-3 text-center text-lg font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
                 <span> دیگه نگران </span>
                 <span> پـیـداشـدن </span>
                 <span> بـــار نـبـاش </span>
@@ -291,17 +281,18 @@ const AppMobileScreens = () => {
         <div className="order-1 col-span-12 lg:order-2 lg:col-span-5">
           <div
             className=" relative h-full overflow-hidden rounded-card-border bg-secondary-900
-      px-6 pt-6 text-white before:absolute before:right-[-125px] before:top-[-170px] 
-      before:h-[300px] before:w-[300px] before:rounded-full before:border-[60px] before:border-solid
-       before:border-secondary-800 "
+      px-6 pt-6 text-white before:absolute before:right-[-100px] before:top-[-125px] before:h-[200px] before:w-[200px] 
+      before:rounded-full before:border-[40px] before:border-solid before:border-secondary-800 md:before:right-[-125px] md:before:top-[-170px] md:before:h-[300px] md:before:w-[300px]
+       md:before:border-[60px] "
           >
             <div className="relative z-10 flex justify-between gap-3">
-              <div className="float-right flex flex-col justify-end gap-4 pb-5">
-                <div className="mb-3 h-fit w-fit self-center rounded bg-secondary-dark px-2 py-1 md:mb-0 md:self-end">
+              <div className="float-right mt-auto inline-block flex-col justify-end gap-4 pb-2 md:mt-0 md:flex md:pb-5">
+                <div className="mb-3 mr-auto h-fit w-fit self-center rounded bg-secondary-dark px-2 py-1 text-[9px] md:mb-0 md:mr-0 md:self-end md:text-base">
                   رانـنـده
                 </div>
-                <h5 className="text-center text-2xl font-bold md:text-start md:text-4xl">
-                  اطلاعات کامل{!isTablet && <br />} و بـدون نقـص
+                <h5 className="flex flex-col font-bold xs:text-2xl md:text-start md:text-4xl">
+                  <span className="whitespace-nowrap"> اطلاعات کامل </span>
+                  <span className="whitespace-nowrap"> و بـدون نقـص </span>
                 </h5>
               </div>
               <div className="relative float-left mt-auto">
@@ -325,17 +316,20 @@ const CostEstimateSec = () => {
     <div
       className={`
           relative flex items-center overflow-hidden bg-primary-700 py-16 text-white
-          before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 
-          after:absolute after:bottom-[-125px] after:right-[-100px] after:h-[200px] after:w-[200px] after:rounded-full after:border-[40px] after:border-solid after:border-primary-600
+          md:before:content-['""'] before:content-none before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 
+          after:absolute md:after:bottom-[-125px] after:bottom-[-175px] md:after:right-[-100px] after:right-[-70px] 
+          md:after:h-[200px] after:h-[300px] md:after:w-[200px] after:w-[300px] after:rounded-full 
+          md:after:border-[40px] after:border-[60px] after:border-solid after:border-primary-600
           ${PADDING_LAYOUT}
       `}
     >
-      <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5  text-center md:flex-row md:text-start">
+      <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5  md:flex-row md:text-start">
         <div className="">
-          <h4 className="mb-2 text-3xl font-bold">
-            هنوز برای استفاده از چـادرمـلـو تردید داریــد؟!
+          <h4 className="mb-2 md:text-3xl text-3xl font-bold gap-2 leading-[3rem]">
+          <span className="text-justify"> هــنــوز بــرای اسـتـفــاده </span>
+          <span className="text-justify"> از چادرملو تردید دارید؟ </span>
           </h4>
-          <h6 className="text-xl font-light">
+          <h6 className="text-xl font-light text-center">
             شما می‌تـوانید با مشخص کردن مبدا و مقصد و وزن بار خود تخمین هزینه
             چـادرمـلـو را در لحظه مشاهده کنید.
           </h6>

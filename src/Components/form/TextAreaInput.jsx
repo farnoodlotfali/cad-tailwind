@@ -10,11 +10,15 @@ const TextAreaInput = (props) => {
       <label
         htmlFor={props?.id || props?.name}
         className={` relative block  flex-1
-            rounded-[5px] border-2 border-primary-light p-4  ${
+            rounded-[5px] border-2  p-4 
+            ${
               !!props?.error
-                ? " border-red-500 "
-                : focused && "border-primary-700"
-            }  ${props?.labelClassName || ""}`}
+                ? "border-red-500"
+                : focused
+                ? "border-primary-700"
+                : "border-primary-light"
+            }   
+            ${props?.labelClassName || ""}`}
       >
         {!!props?.error && (
           <div
@@ -35,7 +39,9 @@ const TextAreaInput = (props) => {
           className={`h-full w-full  ${props?.inputClassName || ""} `}
         />
       </label>
-      <div className="mt-1 text-xs text-red-500 text-start">{props?.error?.message}</div>
+      <div className="mt-1 text-start text-xs text-red-500">
+        {props?.error?.message}
+      </div>
     </div>
   );
 };
