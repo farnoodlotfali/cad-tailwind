@@ -195,6 +195,9 @@ const Header = ({ toggleDrawer }) => {
   );
 };
 
+const FOOTER_LINK_HOVER =
+  "hover:bg-secondary-dark px-3 py-2 rounded-md transition-all";
+
 const Footer = () => {
   return (
     <footer className={`bg-secondary-900 p-10 ${PADDING_LAYOUT}`}>
@@ -212,18 +215,26 @@ const Footer = () => {
 
         <div className="flex w-full justify-around text-center">
           <div className=" flex flex-col gap-7 text-white">
-            <Link href="/faq" prefetch={false}>
+            <Link href="/faq" prefetch={false} className={FOOTER_LINK_HOVER}>
               سوالات متداول
             </Link>
-            <Link href="/privacy" prefetch={false}>
+            <Link
+              href="/privacy"
+              prefetch={false}
+              className={FOOTER_LINK_HOVER}
+            >
               قوانین و مقررات
             </Link>
           </div>
           <div className=" flex flex-col gap-7 text-white">
-            <Link href="/about" prefetch={false}>
+            <Link href="/about" prefetch={false} className={FOOTER_LINK_HOVER}>
               درباره‌ما
             </Link>
-            <Link href="/contact" prefetch={false}>
+            <Link
+              href="/contact"
+              prefetch={false}
+              className={FOOTER_LINK_HOVER}
+            >
               تماس با ما
             </Link>
           </div>
