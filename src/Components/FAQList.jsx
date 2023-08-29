@@ -19,7 +19,7 @@ const FAQList = () => {
 
   return (
     <div className={`py-10 ${PADDING_LAYOUT}`}>
-      <h3 className="mb-10 text-center font-bold text-primary-700">
+      <h3 className="mb-12 text-center text-3xl xs:text-3.2xl font-bold text-primary-700">
         ســوالات مـتـداول
       </h3>
 

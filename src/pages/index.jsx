@@ -66,14 +66,14 @@ const Banner = () => {
         slidesPerView={1}
         dir="rtl"
         loop={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Autoplay]}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: false,
+        // }}
+        // modules={[Autoplay]}
         onSlideChange={(e) => setActiveSlide(e.realIndex)}
         onSwiper={(e) => setActiveSlide(e.realIndex)}
-        className="h-[670px] xs:h-[600px] "
+        className="h-[670px] xs:h-[670px] "
       >
         {HERO_SLIDES.map((item) => {
           return (
@@ -86,7 +86,6 @@ const Banner = () => {
                 >
                   {item.title}
                 </div>
-
                 <div className="col-span-12 flex flex-col gap-3 text-center md:col-span-5 md:text-justify">
                   <h1 className="md:text-align-last-justify font-extrabold">
                     یه تیتر جذاب و چند کلمه‌ای
@@ -101,15 +100,39 @@ const Banner = () => {
                     color={item.color}
                   />
                 </div>
-                <div className="relative col-span-12 h-72 md:col-span-6 md:col-start-7 md:h-full">
-                  <Image
-                    src={`./Assets/images/${item.img}`}
-                    fill
-                    priority
-                    title="Mobile App Screens"
-                    alt="mobile app screens"
-                    className="mx-auto !w-fit md:mx-0 md:mr-auto"
-                  />
+                <div className="relative col-span-12 overflow-hidden md:col-span-6 md:col-start-7 md:h-full ">
+                  {/* <div class=" loader"> </div>{" "} */}
+
+                  <div className="containerx  pt-2">
+                    <div className="hero-circle mt-6">
+                      {" "}
+                      <Image
+                        fill
+                        // class="inner-img"
+                        src={`./Assets/images/${item.img}`}
+                        alt=""
+                        className="!h-auto px-5 pt-4"
+                      />
+                      <div className="hero-rotate" id="circle">
+                        <div className="planet"></div>
+                        <div className="planet"></div>
+                        <div className="planet"></div>
+                        <div className="planet"></div>
+                      </div>{" "}
+                      <div className="hero-circle ">
+                        {" "}
+                        <div
+                          className="hero-rotate-reverse !left-[5%] !top-[-105%] !h-[110%] !w-[110%] !delay-500"
+                          id="circle"
+                        >
+                          <div className="planet"></div>
+                          <div className="planet"></div>
+                          <div className="planet"></div>
+                          <div className="planet"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
@@ -143,8 +166,8 @@ const AboutApp = () => {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 text-white md:grid-cols-2">
-        <div className="rounded-card-border bg-primary-700 p-6 md:bg-none bg-cardboard_box bg-auto bg-bottom bg-no-repeat">
-          <div className="grid grid-cols-1 md:gap-3 gap-6 md:grid-cols-2">
+        <div className="rounded-card-border bg-primary-700 bg-cardboard_box bg-auto bg-bottom bg-no-repeat p-6 md:bg-none">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
               <h4 className="font-bold">صــاحـب بــار</h4>
@@ -163,8 +186,8 @@ const AboutApp = () => {
           </div>
         </div>
 
-        <div className="rounded-card-border bg-secondary-900 p-6 md:bg-none bg-steering_wheel bg-auto bg-bottom bg-no-repeat ">
-          <div className="grid grid-cols-1 md:gap-3 gap-6 md:grid-cols-2">
+        <div className="rounded-card-border bg-secondary-900 bg-steering_wheel bg-auto bg-bottom bg-no-repeat p-6 md:bg-none ">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
               <h4 className=" font-bold">رانــنــده</h4>
@@ -198,17 +221,17 @@ const AppMobileScreens = () => {
         <div className="col-span-12 lg:col-span-5">
           <div
             className=" relative h-full overflow-hidden rounded-card-border bg-primary-700
-      px-6 pt-6 text-white before:absolute md:before:bottom-[-170px] before:bottom-[-110px] md:before:right-[-125px] before:right-[-110px] 
-      md:before:h-[300px] before:h-[200px] md:before:w-[300px] before:w-[200px] before:rounded-full md:before:border-[60px] before:border-[40px] before:border-solid
-       before:border-primary-600 "
+      px-6 pt-6 text-white before:absolute before:bottom-[-110px] before:right-[-110px] before:h-[200px] before:w-[200px] 
+      before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 md:before:bottom-[-170px] md:before:right-[-125px] md:before:h-[300px] md:before:w-[300px]
+       md:before:border-[60px] "
           >
             <div className="relative z-10 flex h-full gap-4 md:block">
-              <div className="float-right inline-block md:flex flex-col gap-4">
+              <div className="float-right inline-block flex-col gap-4 md:flex">
                 <h5 className=" flex flex-col whitespace-nowrap font-bold xs:text-2xl md:text-start md:text-4xl">
                   <span> ثبت آگهی </span>
                   <span> راحت و سریع! </span>
                 </h5>
-                <div className="mb-3 mt-1 md:mt-0 mr-auto h-fit w-fit self-center rounded bg-primary-dark px-2 py-1 text-[9px] md:mb-0 md:mr-0 md:self-end md:text-base">
+                <div className="mb-3 mr-auto mt-1 h-fit w-fit self-center rounded bg-primary-dark px-2 py-1 text-[9px] md:mb-0 md:mr-0 md:mt-0 md:self-end md:text-base">
                   صاحب بار
                 </div>
               </div>
@@ -316,20 +339,20 @@ const CostEstimateSec = () => {
     <div
       className={`
           relative flex items-center overflow-hidden bg-primary-700 py-16 text-white
-          md:before:content-['""'] before:content-none before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 
-          after:absolute md:after:bottom-[-125px] after:bottom-[-175px] md:after:right-[-100px] after:right-[-70px] 
-          md:after:h-[200px] after:h-[300px] md:after:w-[200px] after:w-[300px] after:rounded-full 
-          md:after:border-[40px] after:border-[60px] after:border-solid after:border-primary-600
+          before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 before:content-none after:absolute 
+          after:bottom-[-175px] after:right-[-70px] after:h-[300px] after:w-[300px] after:rounded-full 
+          after:border-[60px] after:border-solid after:border-primary-600 md:before:content-['""'] md:after:bottom-[-125px] 
+          md:after:right-[-100px] md:after:h-[200px] md:after:w-[200px] md:after:border-[40px]
           ${PADDING_LAYOUT}
       `}
     >
       <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5  md:flex-row md:text-start">
         <div className="">
-          <h4 className="mb-2 md:text-3xl text-3xl font-bold gap-2 leading-[3rem]">
-          <span className="text-justify"> هــنــوز بــرای اسـتـفــاده </span>
-          <span className="text-justify"> از چادرملو تردید دارید؟ </span>
+          <h4 className="mb-2 gap-2 text-3xl font-bold leading-[3rem] md:text-3xl">
+            <span className="text-justify"> هــنــوز بــرای اسـتـفــاده </span>
+            <span className="text-justify"> از چادرملو تردید دارید؟ </span>
           </h4>
-          <h6 className="text-xl font-light text-center">
+          <h6 className="text-center text-xl font-light">
             شما می‌تـوانید با مشخص کردن مبدا و مقصد و وزن بار خود تخمین هزینه
             چـادرمـلـو را در لحظه مشاهده کنید.
           </h6>

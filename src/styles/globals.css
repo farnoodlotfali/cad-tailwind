@@ -79,9 +79,121 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-#scroll-container {
-  border: 3px solid black;
-  border-radius: 5px;
+.containerx {
+  display: grid;
+  place-items: center;
   overflow: hidden;
+  --circleDiameter: 500px;
+  --planets: calc(var(--circleDiameter) / 40);
+}
+
+.hero-circle {
+  position: relative;
+  width: var(--circleDiameter);
+  height: var(--circleDiameter);
+}
+
+.hero-rotate {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #00526988;
+  border-radius: 100%;
+  animation: rotate 30s linear infinite;
+}
+.hero-rotate-reverse {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 3px solid #00526988;
+  border-radius: 100%;
+  animation: rotate_reverse 30s linear infinite;
+}
+
+.planet {
+  position: absolute;
+  width: var(--planets);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background: #005269;
+}
+
+.planet:nth-child(1) {
+  top: calc(-1 * var(--planets) / 2);
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+}
+
+.planet:nth-child(2) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  right: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(3) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  left: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(4) {
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  bottom: calc(-1 * var(--planets) / 2);
+}
+
+.planet > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate_reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .containerx {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    --circleDiameter: 400px;
+    --planets: calc(var(--circleDiameter) / 40);
+  }
+}
+@media only screen and (max-width: 999px) {
+  .containerx {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    --circleDiameter: 320px;
+    --planets: calc(var(--circleDiameter) / 40);
+  }
+}
+@media only screen and (max-width: 420px) {
+  .containerx {
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    --circleDiameter: 220px;
+    --planets: calc(var(--circleDiameter) / 20);
+  }
 }
