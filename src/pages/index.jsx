@@ -358,9 +358,8 @@ const CostEstimateSec = () => {
     >
       <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5  md:flex-row md:text-start">
         <div className="">
-          <h4 className="mb-2 gap-2 text-3xl font-bold leading-[3rem] md:text-3xl">
-            <span className="text-justify"> هــنــوز بــرای اسـتـفــاده </span>
-            <span className="text-justify"> از چادرملو تردید دارید؟ </span>
+          <h4 className="mb-2 gap-2  text-center text-3xl font-bold leading-[3rem] md:text-start md:text-3xl">
+            هــنــوز بــرای اسـتـفــاده از چادرملو تردید دارید؟
           </h4>
           <h6 className="text-center text-xl font-light">
             شما می‌تـوانید با مشخص کردن مبدا و مقصد و وزن بار خود تخمین هزینه
