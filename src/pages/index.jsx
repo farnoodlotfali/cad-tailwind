@@ -13,6 +13,7 @@ import Head from "next/head";
 import FAQList from "@/Components/FAQList";
 import PanelLayout, { PADDING_LAYOUT } from "@/Layouts/PanelLayout";
 import { enToFaNumber } from "@/Utility/utils";
+import heroStyles from "@/styles/hero.module.css";
 
 // paddding= p-10
 
@@ -22,11 +23,13 @@ const HERO_SLIDES = [
     title: "صاحب بار",
     color: "primary",
     bgColor: "bg-primary-700",
+    borderColor: "border-[#005269]",
   },
   {
     img: "driverApp.svg",
     title: "رانـنـده",
     color: "secondary",
+    borderColor: "border-[#232C32]",
     bgColor: "bg-secondary-900",
   },
 ];
@@ -79,10 +82,10 @@ const Banner = () => {
           return (
             <SwiperSlide key={item.title}>
               <div
-                className={`relative grid grid-cols-12 items-center gap-4 ${item.bgColor} h-full py-10 pt-28 text-white ${PADDING_LAYOUT}`}
+                className={`relative grid grid-cols-12 items-center gap-4 ${item.bgColor} h-full pt-28 text-white ${PADDING_LAYOUT}`}
               >
                 <div
-                  className={`bg-${item.color}-dark absolute right-[200px] top-[33px] w-fit rounded-md px-3 py-1 text-[9px] md:right-[64px] md:top-[73px] md:text-base lg:right-[270px] lg:top-[28px] `}
+                  className={`bg-${item.color}-dark absolute right-[200px] top-[33px] w-fit rounded-md px-3 py-1 text-[9px] font-semibold md:right-[64px] md:top-[73px] md:text-base lg:right-[270px] lg:top-[28px] `}
                 >
                   {item.title}
                 </div>
@@ -101,35 +104,41 @@ const Banner = () => {
                   />
                 </div>
                 <div className="relative col-span-12 overflow-hidden md:col-span-6 md:col-start-7 md:h-full ">
-                  {/* <div class=" loader"> </div>{" "} */}
-
-                  <div className="containerx  pt-2">
-                    <div className="hero-circle mt-6">
-                      {" "}
+                  <div className={heroStyles.hero_container}>
+                    <div className={heroStyles.hero_circle}>
                       <Image
                         fill
-                        // class="inner-img"
+                        priority
                         src={`./Assets/images/${item.img}`}
-                        alt=""
+                        title="Mobile App Screens"
+                        alt="mobile app screens"
                         className="!h-auto px-5 pt-4"
                       />
-                      <div className="hero-rotate" id="circle">
-                        <div className="planet"></div>
-                        <div className="planet"></div>
-                        <div className="planet"></div>
-                        <div className="planet"></div>
-                      </div>{" "}
-                      <div className="hero-circle ">
-                        {" "}
-                        <div
-                          className="hero-rotate-reverse !left-[5%] !top-[-105%] !h-[110%] !w-[110%] !delay-500"
-                          id="circle"
-                        >
-                          <div className="planet"></div>
-                          <div className="planet"></div>
-                          <div className="planet"></div>
-                          <div className="planet"></div>
-                        </div>
+
+                      <div
+                        className={`${heroStyles.hero_rotate} ${item.borderColor}`}
+                      >
+                        {Array(4)
+                          .fill(1)
+                          .map((pl, index) => (
+                            <div
+                              key={index}
+                              className={`${heroStyles.planet} bg-${item.color}-dark `}
+                            ></div>
+                          ))}
+                      </div>
+
+                      <div
+                        className={`${heroStyles.hero_rotate_reverse} ${item.borderColor}`}
+                      >
+                        {Array(4)
+                          .fill(1)
+                          .map((pl, index) => (
+                            <div
+                              key={index}
+                              className={`${heroStyles.planet} bg-${item.color}-dark `}
+                            ></div>
+                          ))}
                       </div>
                     </div>
                   </div>
@@ -150,9 +159,10 @@ const AboutApp = () => {
       className={`bg-white bg-pattern bg-cover bg-center bg-no-repeat py-10 ${PADDING_LAYOUT}`}
     >
       <div className="flex flex-col items-center gap-3 md:flex-row md:gap-5 ">
-        <h2 className="whitespace-nowrap font-bold text-primary-700">
+        <h2 className="whitespace-nowrap text-3xl font-bold text-primary-700 xs:text-3.2xl">
           دربـاره چـادرمـلـو
         </h2>
+
         <div className=" bg-primary-400 md:h-28 md:w-[2px] " />
         <p className="text-justify leading-8 md:leading-7">
           {enToFaNumber(
@@ -166,7 +176,7 @@ const AboutApp = () => {
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 text-white md:grid-cols-2">
-        <div className="rounded-card-border bg-primary-700 bg-cardboard_box bg-auto bg-bottom bg-no-repeat p-6 md:bg-none">
+        <div className="rounded-card-border-sm md:rounded-card-border-lg bg-primary-700 bg-cardboard_box bg-auto bg-bottom bg-no-repeat p-6 md:bg-none">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
@@ -186,7 +196,7 @@ const AboutApp = () => {
           </div>
         </div>
 
-        <div className="rounded-card-border bg-secondary-900 bg-steering_wheel bg-auto bg-bottom bg-no-repeat p-6 md:bg-none ">
+        <div className="rounded-card-border-sm md:rounded-card-border-lg bg-secondary-900 bg-steering_wheel bg-auto bg-bottom bg-no-repeat p-6 md:bg-none ">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
@@ -211,16 +221,16 @@ const AboutApp = () => {
 };
 
 const AppMobileScreens = () => {
-  const isTablet = useMediaQuery(`(max-width: ${BREAK_POINTS.md})`);
   return (
     <div className={`bg-white py-10 ${PADDING_LAYOUT}`}>
-      <h3 className="mb-10 text-center font-bold text-primary-700">
+      <h3 className="mb-10 text-center  text-3xl font-bold text-primary-700 xs:text-3.2xl">
         بـخـش‌هـای اپـلـیـکـیـشـن
       </h3>
+
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-12 lg:col-span-5">
           <div
-            className=" relative h-full overflow-hidden rounded-card-border bg-primary-700
+            className=" rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden bg-primary-700
       px-6 pt-6 text-white before:absolute before:bottom-[-110px] before:right-[-110px] before:h-[200px] before:w-[200px] 
       before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 md:before:bottom-[-170px] md:before:right-[-125px] md:before:h-[300px] md:before:w-[300px]
        md:before:border-[60px] "
@@ -235,7 +245,7 @@ const AppMobileScreens = () => {
                   صاحب بار
                 </div>
               </div>
-              <div className="relative float-left mt-auto">
+              <div className="relative float-left mr-auto mt-auto">
                 <Image
                   src="./Assets/images/Ad.svg"
                   width={250}
@@ -248,17 +258,17 @@ const AppMobileScreens = () => {
         </div>
         <div className="col-span-12 lg:col-span-7">
           <div
-            className=" relative h-full overflow-hidden rounded-card-border bg-gray-50
-      px-6 before:absolute before:bottom-0 before:left-[-118px] before:right-auto
-      before:top-[-124px] before:h-full before:w-[200px] before:rounded-full before:border-[40px] before:border-solid
-      before:border-stone-200 md:before:bottom-0 md:before:left-0 md:before:right-[-162px] md:before:top-0 md:before:w-[300px]
+            className=" before:border-27343c0d rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden
+      bg-gray-50 px-6 before:absolute before:bottom-0 before:left-[-118px]
+      before:right-auto before:top-[-124px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid
+      md:before:bottom-0 md:before:left-0 md:before:right-[-162px] md:before:top-0 md:before:h-full md:before:w-[300px]
       md:before:border-[60px] "
           >
             <div className="relative z-10 mr-auto flex h-full w-full flex-col items-center justify-between gap-4 md:w-4/5 md:flex-row ">
-              <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-3 text-center text-lg font-bold xs:w-full md:float-right md:w-48 md:text-start md:text-4xl">
-                <span>هـرلـحـظه از </span>
-                <span> وضعیت بـار </span>
-                <span>بـاخـبـر باش </span>
+              <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-5 text-center text-lg font-bold xs:w-full md:float-right md:w-48 md:pt-3 md:text-start md:text-4xl">
+                <span>هرلحظه از </span>
+                <span> وضعیت بار </span>
+                <span>باخبر باش </span>
               </h5>
               <div className="relative float-none h-full md:float-left">
                 <Image
@@ -277,10 +287,10 @@ const AppMobileScreens = () => {
       <div className="mt-5 grid grid-cols-12 gap-5">
         <div className="order-2 col-span-12 lg:order-1 lg:col-span-7">
           <div
-            className=" relative h-full overflow-hidden rounded-card-border bg-gray-50
-      px-6 before:absolute before:bottom-auto before:left-[50%] before:top-[50%]
-      before:h-full before:w-[230px] before:-translate-x-1/2 before:rounded-full before:border-[60px]
-      before:border-solid before:border-stone-200 md:before:bottom-0 md:before:left-[-162px]
+            className=" before:border-27343c0d rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden
+      bg-gray-50 px-6 before:absolute before:bottom-auto before:left-[50%]
+      before:top-[50%] before:h-full before:w-[230px] before:-translate-x-1/2 before:rounded-full
+      before:border-[60px] before:border-solid md:before:bottom-0 md:before:left-[-162px]
       md:before:top-0 md:before:w-[300px] md:before:-translate-x-0"
           >
             <div className="relative z-10 ml-auto flex h-full w-full flex-col-reverse items-center justify-between gap-4 md:w-4/5 md:flex-row ">
@@ -303,12 +313,12 @@ const AppMobileScreens = () => {
         </div>
         <div className="order-1 col-span-12 lg:order-2 lg:col-span-5">
           <div
-            className=" relative h-full overflow-hidden rounded-card-border bg-secondary-900
+            className=" rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden bg-secondary-900
       px-6 pt-6 text-white before:absolute before:right-[-100px] before:top-[-125px] before:h-[200px] before:w-[200px] 
       before:rounded-full before:border-[40px] before:border-solid before:border-secondary-800 md:before:right-[-125px] md:before:top-[-170px] md:before:h-[300px] md:before:w-[300px]
        md:before:border-[60px] "
           >
-            <div className="relative z-10 flex justify-between gap-3">
+            <div className="flw relative z-10 flex justify-between gap-7 md:gap-3">
               <div className="float-right mt-auto inline-block flex-col justify-end gap-4 pb-2 md:mt-0 md:flex md:pb-5">
                 <div className="mb-3 mr-auto h-fit w-fit self-center rounded bg-secondary-dark px-2 py-1 text-[9px] md:mb-0 md:mr-0 md:self-end md:text-base">
                   رانـنـده

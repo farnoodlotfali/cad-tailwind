@@ -179,7 +179,7 @@ const Header = ({ toggleDrawer }) => {
             {HEADER_LINKS.map((li) => {
               return (
                 <Link
-                  className="font-semibold hover:underline"
+                  className="font-semibold hover:bg-[#00000033] px-3 py-2 rounded-md "
                   href={li.link}
                   key={li.link}
                   prefetch={false}

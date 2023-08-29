@@ -61,7 +61,8 @@ module.exports = {
         cardboard_box: "url('../../public/Assets/images/bg_cardboard_box.svg')",
       },
       borderRadius: {
-        "card-border": "25px",
+        "card-border-lg": "25px",
+        "card-border-sm": "15px",
       },
       fontSize: {
         "3.2xl": "32px",

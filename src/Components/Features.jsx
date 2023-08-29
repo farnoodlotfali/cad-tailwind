@@ -40,15 +40,16 @@ const FEATURES_ITEMS = [
 const Features = () => {
   return (
     <div className={`py-10 ${PADDING_LAYOUT}`}>
-      <h3 className="py-12 text-center text-3.2xl font-bold text-primary-700">
+      <h3 className="py-12 text-center text-3xl font-bold text-primary-700 xs:text-3.2xl">
         ویــژگــی‌هــا
       </h3>
+
       <div className=" flex flex-wrap justify-center gap-5">
         {FEATURES_ITEMS.map((item, i) => {
           return (
             <div
               key={i}
-              className="group flex w-full flex-col items-center justify-center gap-3 rounded-card-border bg-white p-10 text-center transition-all hover:bg-primary-700 md:w-4/10 lg:w-3/10"
+              className="rounded-card-border-sm md:rounded-card-border-lg group flex w-full flex-col items-center justify-center gap-3 bg-white p-10 text-center transition-all hover:bg-primary-700 md:w-4/10 lg:w-3/10"
             >
               <div className="flex w-fit rounded-full bg-primary-light p-4 group-hover:bg-primary-dark">
                 <SvgSPrite

@@ -10,7 +10,7 @@ const TextInput = (props) => {
       <label
         htmlFor={props?.id || props?.name}
         className={`relative block rounded-[5px] border-2 
-             p-4 
+             p-4 placeholder-slate-700
             ${
               !!props?.error
                 ? "border-red-500"
