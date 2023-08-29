@@ -175,7 +175,7 @@ const Header = ({ toggleDrawer }) => {
             />
           </div>
         ) : (
-          <div className="flex justify-between gap-x-10">
+          <div className="flex justify-between gap-x-5">
             {HEADER_LINKS.map((li) => {
               return (
                 <Link

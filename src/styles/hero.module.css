@@ -13,6 +13,8 @@
   width: var(--circleDiameter);
   height: var(--circleDiameter);
   margin-top: 1.5rem;
+  margin-right: auto;
+  margin-left: 30px;
 }
 
 .hero_rotate {
@@ -85,28 +87,23 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .containerx {
-    display: grid;
-    place-items: center;
-    overflow: hidden;
+  .hero_container {
     --circleDiameter: 400px;
     --planets: calc(var(--circleDiameter) / 40);
   }
+  .hero_circle {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 @media only screen and (max-width: 999px) {
-  .containerx {
-    display: grid;
-    place-items: center;
-    overflow: hidden;
+  .hero_container {
     --circleDiameter: 320px;
     --planets: calc(var(--circleDiameter) / 40);
   }
 }
 @media only screen and (max-width: 420px) {
-  .containerx {
-    display: grid;
-    place-items: center;
-    overflow: hidden;
+  .hero_container {
     --circleDiameter: 220px;
     --planets: calc(var(--circleDiameter) / 20);
   }
