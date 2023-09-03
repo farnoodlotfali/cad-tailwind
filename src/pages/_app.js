@@ -9,7 +9,6 @@ export default function App({ Component, pageProps }) {
     <AppState>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="color-scheme" content="dark light" />
         <title> دراپ </title>
       </Head>
       <NextNProgress
