@@ -19,7 +19,7 @@ import heroStyles from "@/styles/hero.module.css";
 
 const HERO_SLIDES = [
   {
-    img: "customerApp.svg",
+    img: "customerApp.png",
     titleFor: "صاحب بار",
     title: "همه چیز رو به ما بسپارید!",
     subtitle:
@@ -29,7 +29,7 @@ const HERO_SLIDES = [
     borderColor: "border-primary-dark",
   },
   {
-    img: "driverApp.svg",
+    img: "driverApp.png",
     titleFor: "رانـنـده",
     subtitle:
       "با استفاده از دراپ هیچگاه نگران پیداشدن بار نباشید و بدون توقف درآمدزایی کنید.",
@@ -72,11 +72,11 @@ const Banner = () => {
         slidesPerView={1}
         dir="rtl"
         loop={true}
-        // autoplay={{
-        //   delay: 3500,
-        //   disableOnInteraction: false,
-        // }}
-        // modules={[Autoplay]}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        modules={[Autoplay]}
         onSlideChange={(e) => setActiveSlide(e.realIndex)}
         onSwiper={(e) => setActiveSlide(e.realIndex)}
         className="h-[670px] xs:h-[670px] "
@@ -109,7 +109,7 @@ const Banner = () => {
                       <Image
                         fill
                         priority
-                        src={`./Assets/images/${item.img}`}
+                        src={`/Assets/images/${item.img}`}
                         title="Mobile App Screens"
                         alt="mobile app screens"
                         className="!h-auto px-5 pt-4"
@@ -247,7 +247,7 @@ const AppMobileScreens = () => {
               </div>
               <div className="relative float-left mr-auto mt-auto">
                 <Image
-                  src="./Assets/images/Ad.svg"
+                  src="/Assets/images/Ad.png"
                   width={250}
                   height={400}
                   alt="Ad"
@@ -272,7 +272,7 @@ const AppMobileScreens = () => {
               </h5>
               <div className="relative float-none h-full md:float-left">
                 <Image
-                  src="./Assets/images/loan.svg"
+                  src="/Assets/images/loan.png"
                   width={400}
                   height={100}
                   className="h-full"
@@ -296,7 +296,7 @@ const AppMobileScreens = () => {
             <div className="relative z-10 ml-auto flex h-full w-full flex-col-reverse items-center justify-between gap-4 md:w-4/5 md:flex-row ">
               <div className="relative float-none h-full md:float-left">
                 <Image
-                  src="./Assets/images/screen2.svg"
+                  src="/Assets/images/screen2.png"
                   width={400}
                   height={100}
                   className="h-full"
@@ -330,7 +330,7 @@ const AppMobileScreens = () => {
               </div>
               <div className="relative float-left mt-auto">
                 <Image
-                  src="./Assets/images/screen3.svg"
+                  src="/Assets/images/screen3.png"
                   width={250}
                   height={400}
                   alt="screen3"

@@ -238,7 +238,7 @@ const Footer = () => {
         <div className="flex w-full justify-center md:justify-end ">
           <div className=" rounded-lg bg-white p-4 ">
             <Image
-              src={"./Assets/images/namad.svg"}
+              src={"/Assets/images/namad.png"}
               alt="namad"
               width={300}
               height={160}
