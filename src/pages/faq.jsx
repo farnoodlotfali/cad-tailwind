@@ -60,7 +60,7 @@ const FAQ = () => {
   return (
     <>
       <Head>
-        <title> چادرملو - ســوالات مـتـداول </title>
+        <title> دراپ - ســوالات مـتـداول </title>
       </Head>
 
       <div className="bg-white pb-10 pt-28">
@@ -74,7 +74,7 @@ const FAQ = () => {
         "
       >
         <div className="relative z-10 mx-auto max-w-3xl py-8 ">
-          <h3 className=" to-inherit font-bold text-primary-700 md:text-3.2xl">
+          <h3 className=" to-inherit font-bold text-primary-900 md:text-3.2xl">
             پاسخی برای سوال خود نیافتید؟
           </h3>
           <h5 className=" mb-8 mt-4 text-inherit md:text-2xl">
@@ -118,7 +118,7 @@ const FAQ = () => {
             </div>
 
             <button
-              className="mt-5 w-full rounded bg-primary-700 py-3 text-white"
+              className="mt-5 w-full rounded bg-primary-900 py-3 text-white"
               type="submit"
             >
               ارسال پیام

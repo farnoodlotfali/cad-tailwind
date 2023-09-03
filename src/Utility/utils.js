@@ -1,3 +1,6 @@
+import { CedarmapToken } from "@/constants/Const";
+import axios from "axios";
+
 // should return farsi number with giver input
 export function enToFaNumber(number) {
   if (number === 0) return "۰";
@@ -84,4 +87,84 @@ export const validateNumberInput = (val) => {
   }
 
   return true;
+};
+
+// for map
+export const getLocationName = async (center, returnAllData = false) => {
+  let name;
+  const requestUrl =
+    "https://api.cedarmaps.com/v1/geocode/cedarmaps.streets/" +
+    center[0] +
+    "," +
+    center[1] +
+    ".json?access_token=" +
+    CedarmapToken;
+
+  await axios.get(requestUrl).then((res) => {
+    const result = res.data.result;
+    if (returnAllData) {
+      name = result;
+    } else {
+      name = `${result.city} - ${result.address}`;
+    }
+  });
+
+  return name;
+};
+
+// for map
+export const getPathCoordinates = async (path) => {
+  // path = [[source_lat,source_lng],[destination_lat,destination_lng]]
+  let coordinates = [];
+  let distance = 0;
+  let time = 0;
+
+  const url = `https://api.cedarmaps.com/v1/direction/cedarmaps.driving/${path[0][0]},${path[0][1]};${path[1][0]},${path[1][1]}?access_token=${CedarmapToken}`;
+  await axios.get(url).then((res) => {
+    coordinates = res.data.result.routes[0].geometry.coordinates;
+    distance = res.data.result.routes[0].distance / 1000;
+    time = res.data.result.routes[0].time / 1000 / 60;
+  });
+
+  return { coordinates, distance, time };
+};
+
+// cedarmaps api give lng first and lat second.
+// leaflet api works with lat first and lng second.
+// so we need to reverse Routes.
+export const reverseRoutes = (coordinates) => {
+  let reversed = [];
+
+  coordinates.forEach((arr) => {
+    reversed.push(arr.reverse());
+  });
+
+  return reversed;
+};
+
+// calculate zoom for map
+export const calculateZoom = (n) => {
+  if (n > 0 && n < 0.044) {
+    return 12;
+  } else if (n > 0.044 && n < 0.14) {
+    return 11;
+  } else if (n > 0.14 && n < 1) {
+    return 9;
+  } else if (n > 1 && n < 2) {
+    return 7;
+  } else {
+    return 6;
+  }
+};
+
+// find bigger number
+export const findBiggerNumber = (num1, num2) => {
+  num1 = Math.abs(num1);
+  num2 = Math.abs(num2);
+
+  if (num1 > num2) {
+    return num1;
+  } else {
+    return num2;
+  }
 };

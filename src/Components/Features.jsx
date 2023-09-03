@@ -7,18 +7,18 @@ const FEATURES_ITEMS = [
     icon: "semi_truck",
     title: enToFaNumber("25,000+ ناوگان"),
     text: enToFaNumber(
-      "چادرملو با دسترسی به بیش از 25 هزار ناوگان به عنوان بزرگترین سامانه هوشمند حمل و نقل بار حمل و نقل در کشور است."
+      "دراپ با دسترسی به بیش از 25 هزار ناوگان به عنوان بزرگترین سامانه هوشمند حمل و نقل بار حمل و نقل در کشور است."
     ),
   },
   {
     icon: "internet",
     title: "اعلام بار اینترنتی",
-    text: "صاحبان کالا باربری‌ها و متصدیان حمل بار در هرزمان و مکان میتوانند در سامانه اعلام بار چادرملو، ایران پاسخگوی طیف وسیعی از نیازهای صنعت ثبت بار کنند.",
+    text: "صاحبان کالا باربری‌ها و متصدیان حمل بار در هرزمان و مکان میتوانند در سامانه اعلام بار دراپ، ایران پاسخگوی طیف وسیعی از نیازهای صنعت ثبت بار کنند.",
   },
   {
     icon: "shield_check",
     title: "تضمین امنیت کالا",
-    text: "چادرملو با ارائه بارنامه و بیمه کامل بار همکاری با رانندگان حرفهای تامین ناوگان سالم و ارائه خدمات پشتیبانی قوی سلامت و امنیت محموله های ارسالی را تضمین می‌کند",
+    text: "دراپ با ارائه بارنامه و بیمه کامل بار همکاری با رانندگان حرفهای تامین ناوگان سالم و ارائه خدمات پشتیبانی قوی سلامت و امنیت محموله های ارسالی را تضمین می‌کند",
   },
   {
     icon: "container_truck",
@@ -33,14 +33,14 @@ const FEATURES_ITEMS = [
   {
     icon: "dollar_coin",
     title: "مقرون به صرفه",
-    text: "چادرملو با هدف توسعه صنعت حمل و حفظ حقوق کلیه ذینفعان با فراهم نمودن دسترسی رایگان به سامانه ثبت و اعلام بار و حذف هزینه های اضافی هم به افزایش درآمد رانندگان و..",
+    text: "دراپ با هدف توسعه صنعت حمل و حفظ حقوق کلیه ذینفعان با فراهم نمودن دسترسی رایگان به سامانه ثبت و اعلام بار و حذف هزینه های اضافی هم به افزایش درآمد رانندگان و..",
   },
 ];
 
 const Features = () => {
   return (
     <div className={`py-10 ${PADDING_LAYOUT}`}>
-      <h3 className="py-12 text-center text-3xl font-bold text-primary-700 xs:text-3.2xl">
+      <h3 className="py-12 text-center text-3xl font-bold text-primary-900 xs:text-3.2xl">
         ویــژگــی‌هــا
       </h3>
 
@@ -49,13 +49,13 @@ const Features = () => {
           return (
             <div
               key={i}
-              className="rounded-card-border-sm md:rounded-card-border-lg group flex w-full flex-col items-center justify-center gap-3 bg-white p-10 text-center transition-all hover:bg-primary-700 md:w-4/10 lg:w-3/10"
+              className="rounded-card-border-sm md:rounded-card-border-lg group flex w-full flex-col items-center justify-center gap-3 bg-white p-10 text-center transition-all hover:bg-primary-900 md:w-4/10 lg:w-3/10"
             >
               <div className="flex w-fit rounded-full bg-primary-light p-4 group-hover:bg-primary-dark">
                 <SvgSPrite
                   icon={item.icon}
                   size="extraLarge"
-                  className="fill-primary-700 group-hover:fill-white "
+                  className="fill-primary-900 group-hover:fill-white "
                 />
               </div>
               <h4 className="font-bold group-hover:text-white">{item.title}</h4>

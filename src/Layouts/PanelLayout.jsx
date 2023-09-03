@@ -2,9 +2,10 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { BREAK_POINTS } from "../../constants/Const";
+import { BREAK_POINTS } from "../constants/Const";
 import { useRouter } from "next/router";
 import { SvgSPrite } from "@/Components/SvgSPrite";
+import LogoApp from "@/Components/LogoApp";
 
 export const PADDING_LAYOUT = "px-8 md:px-16 lg:px-24";
 
@@ -74,7 +75,7 @@ const Drawer = ({ openDrawer, toggleDrawer }) => {
               {DRAWER_LINKS.map((item) => {
                 return (
                   <Link
-                    className="text-xl font-semibold text-primary-700 hover:underline"
+                    className="text-xl font-semibold text-primary-900 hover:underline"
                     prefetch={false}
                     href={item.link}
                     key={item.link}
@@ -86,20 +87,17 @@ const Drawer = ({ openDrawer, toggleDrawer }) => {
               })}
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-around">
               <Link href="/" prefetch={false} className="flex ">
-                <Image
-                  src="./chador_logo_colored.svg"
-                  width={40}
-                  height={40}
-                  alt="chador_logo"
-                />
+                <div className="h-12 w-12">
+                  <LogoApp className="text-primary-900" />
+                </div>
               </Link>
 
               <div className=" min-h-[30px] w-[2px] bg-primary-400 " />
 
               <Link href="/" prefetch={false} className="flex ">
-                <h1 className="text-xl font-bold text-primary-700">چادرملو</h1>
+                <h1 className="text-xl font-bold text-primary-900">دراپ</h1>
               </Link>
             </div>
           </div>
@@ -142,7 +140,7 @@ const Header = ({ toggleDrawer }) => {
   return (
     <header
       className={`absolute left-0 right-0 top-0 z-10 w-full bg-transparent ${
-        isTransparent ? "text-white" : "text-primary-700"
+        isTransparent ? "text-white" : "text-primary-900"
       }`}
     >
       <div
@@ -150,20 +148,17 @@ const Header = ({ toggleDrawer }) => {
       >
         <div className="flex items-center gap-x-4">
           <Link href="/" prefetch={false} style={{ display: "flex" }}>
-            <Image
-              src={
-                isTransparent
-                  ? "./chador_logo.svg"
-                  : "./chador_logo_colored.svg"
-              }
-              width={40}
-              height={40}
-              alt="chador_logo"
-            />
+            <div className="h-10 w-10">
+              {isTransparent ? (
+                <LogoApp className="text-white" />
+              ) : (
+                <LogoApp className="text-primary-900" />
+              )}
+            </div>
           </Link>
           <div className=" h-4 w-[1px] bg-gray-400 md:h-7 " />
           <Link href="/" prefetch={false}>
-            <h1 className="whitespace-nowrap text-xl font-bold ">چـادرمـلـو</h1>
+            <h1 className="whitespace-nowrap text-xl font-bold ">دراپ</h1>
           </Link>
         </div>
         {isTablet ? (
@@ -179,7 +174,7 @@ const Header = ({ toggleDrawer }) => {
             {HEADER_LINKS.map((li) => {
               return (
                 <Link
-                  className="font-semibold hover:bg-[#00000033] px-3 py-2 rounded-md "
+                  className="rounded-md px-3 py-2 font-semibold hover:bg-[#00000033] "
                   href={li.link}
                   key={li.link}
                   prefetch={false}
@@ -196,24 +191,24 @@ const Header = ({ toggleDrawer }) => {
 };
 
 const FOOTER_LINK_HOVER =
-  "hover:bg-secondary-dark px-3 py-2 rounded-md transition-all";
+  "hover:bg-[#00000033] px-3 py-2 rounded-md transition-all";
 
 const Footer = () => {
   return (
-    <footer className={`bg-secondary-900 p-10 ${PADDING_LAYOUT}`}>
+    <footer className={`bg-primary-dark p-10 ${PADDING_LAYOUT}`}>
       <div className="flex flex-col items-center justify-center gap-5 md:flex-row md:justify-between">
         <div className="w-full">
           <Image
-            src={"./chador_logo.svg"}
-            alt="chador_logo"
-            width={160}
-            height={160}
-            title="chador_logo"
+            src={"./drop_logo.svg"}
+            alt="drop_logo"
+            width={250}
+            height={250}
+            title="drop_logo"
             className="mx-auto md:mx-0"
           />
         </div>
 
-        <div className="flex w-full justify-around text-center">
+        <div className="flex w-full justify-around text-center whitespace-nowrap">
           <div className=" flex flex-col gap-7 text-white">
             <Link href="/faq" prefetch={false} className={FOOTER_LINK_HOVER}>
               سوالات متداول
@@ -257,10 +252,10 @@ const Footer = () => {
 
       <div className="flex flex-col items-center justify-between gap-5 text-center text-white md:flex-row md:text-start">
         <h5 className="">
-          تمامی حقوق به شرکت <strong>چادرملو</strong> تعلق دارد
+          تمامی حقوق به شرکت <strong>سریر لجستیک</strong> تعلق دارد
         </h5>
 
-        <a href="mailto:info@chadormalu.com">info@chadormalu.com</a>
+        <a href="mailto:info@droproad.ir">info@droproad.ir</a>
       </div>
     </footer>
   );

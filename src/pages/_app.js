@@ -10,11 +10,11 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="color-scheme" content="dark light" />
-        <title> چادرملو </title>
+        <title> دراپ </title>
       </Head>
       <NextNProgress
         height={8}
-        color={"#00617C"}
+        color={"#202c43"}
         showOnShallow={true}
         startPosition={0.3}
       />

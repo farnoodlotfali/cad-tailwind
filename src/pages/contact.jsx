@@ -6,7 +6,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useForm } from "react-hook-form";
-import { BREAK_POINTS } from "../../constants/Const";
+import { BREAK_POINTS } from "../constants/Const";
 
 const Map = dynamic(() => import("@/Components/Map"), {
   ssr: false,
@@ -71,11 +71,11 @@ const Contact = () => {
   return (
     <>
       <Head>
-        <title> چادرملو - تماس با ما</title>
+        <title> دراپ - تماس با ما</title>
       </Head>
 
       <div className={`bg-white py-20 ${PADDING_LAYOUT}`}>
-        <h3 className="mb-3 mt-16 text-center text-3.2xl font-bold text-primary-700">
+        <h3 className="mb-3 mt-16 text-center text-3.2xl font-bold text-primary-900">
           تـمـاس بـامـا
         </h3>
         <h5 className="mb-14 text-center md:text-2xl">
@@ -118,7 +118,7 @@ const Contact = () => {
               </div>
 
               <button
-                className="mt-5 w-full rounded bg-primary-700 py-3 text-white"
+                className="mt-5 w-full rounded bg-primary-900 py-3 text-white"
                 type="submit"
               >
                 ارسال پیام
@@ -127,7 +127,7 @@ const Contact = () => {
           </div>
           <div className="col-span-2 flex flex-col md:col-span-1">
             {isTablet && (
-              <div className="my-8 text-center text-3.2xl font-bold text-primary-700">
+              <div className="my-8 text-center text-3.2xl font-bold text-primary-900">
                 دفـتـر مـرکـزی
               </div>
             )}

@@ -14,3 +14,6 @@ export const BREAK_POINTS = {
 
   "2xl": "1536px",
 };
+
+export const CedarmapToken = "2e2dfe4dc320a34c99736b8693cd6c99d7f6f985";
+export const defaultCenter = [35.75734729205658, 51.40998601913453];

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { SvgSPrite } from "@/Components/SvgSPrite";
-import { BREAK_POINTS } from "../../constants/Const";
+import { BREAK_POINTS } from "../constants/Const";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import DownloadButton from "@/Components/DownloadButton";
 import Link from "next/link";
@@ -20,28 +20,31 @@ import heroStyles from "@/styles/hero.module.css";
 const HERO_SLIDES = [
   {
     img: "customerApp.svg",
-    title: "صاحب بار",
+    titleFor: "صاحب بار",
+    title: "همه چیز رو به ما بسپارید!",
+    subtitle:
+      "فقط کافیه که بار خودتون رو ثبت کنید، بقیه کارها رو دراپ انجام میده :)",
     color: "primary",
-    bgColor: "bg-primary-700",
-    borderColor: "border-[#005269]",
+    bgColor: "bg-primary-900",
+    borderColor: "border-primary-dark",
   },
   {
     img: "driverApp.svg",
-    title: "رانـنـده",
+    titleFor: "رانـنـده",
+    subtitle:
+      "با استفاده از دراپ هیچگاه نگران پیداشدن بار نباشید و بدون توقف درآمدزایی کنید.",
+    title: "رانندگی بی‌دردسر، خیال راحت",
     color: "secondary",
-    borderColor: "border-[#232C32]",
-    bgColor: "bg-secondary-900",
+    borderColor: "border-secondary-dark",
+    bgColor: "bg-secondary-700",
   },
 ];
 
 const Home = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const isTablet = useMediaQuery(`(max-width: ${BREAK_POINTS.md})`);
-
   return (
     <>
       <Head>
-        <title> چادرملو - صفحه اصلی</title>
+        <title> دراپ - صفحه اصلی</title>
       </Head>
 
       <div className="min-h-screen">
@@ -70,7 +73,7 @@ const Banner = () => {
         dir="rtl"
         loop={true}
         // autoplay={{
-        //   delay: 2500,
+        //   delay: 3500,
         //   disableOnInteraction: false,
         // }}
         // modules={[Autoplay]}
@@ -85,25 +88,22 @@ const Banner = () => {
                 className={`relative grid grid-cols-12 items-center gap-4 ${item.bgColor} h-full pt-28 text-white ${PADDING_LAYOUT}`}
               >
                 <div
-                  className={`bg-${item.color}-dark absolute right-[200px] top-[33px] w-fit rounded-md px-3 py-1 text-[9px] font-semibold md:right-[64px] md:top-[73px] md:text-base lg:right-[270px] lg:top-[28px] `}
+                  className={`bg-${item.color}-dark absolute right-[170px] top-[33px] w-fit rounded-md px-3 py-1 text-[9px] font-semibold md:right-[64px] md:top-[73px] md:text-base lg:right-[230px] lg:top-[28px] `}
                 >
-                  {item.title}
+                  {item.titleFor}
                 </div>
-                <div className="col-span-12 flex flex-col gap-3 text-center md:col-span-5 md:text-justify">
-                  <h1 className="md:text-align-last-justify font-extrabold">
-                    یه تیتر جذاب و چند کلمه‌ای
+                <div className="col-span-12 flex flex-col gap-3 text-center md:col-span-6 md:text-start">
+                  <h1 className=" font-extrabold leading-[1.25]">
+                    {item.title}
                   </h1>
-                  <h4 className="text-base md:text-inherit">
-                    توضیح کوتاه و مختصر در مورد تیتر و ترغیب برای کلیک بر روی
-                    دکمه و دعوت به اقدام
-                  </h4>
+                  <h4 className="text-base md:text-inherit">{item.subtitle}</h4>
                   <DownloadButton
-                    label={`دانلود اپ ${item.title}`}
+                    label={`دانلود اپ ${item.titleFor}`}
                     className="mx-auto mt-2 w-fit py-3 md:mx-0 md:mt-5 "
                     color={item.color}
                   />
                 </div>
-                <div className="relative col-span-12 overflow-hidden md:col-span-6 md:col-start-7 md:h-full ">
+                <div className="relative col-span-12 overflow-hidden md:col-span-6  md:h-full ">
                   <div className={heroStyles.hero_container}>
                     <div className={heroStyles.hero_circle}>
                       <Image
@@ -159,24 +159,24 @@ const AboutApp = () => {
       className={`bg-white bg-pattern bg-cover bg-center bg-no-repeat py-10 ${PADDING_LAYOUT}`}
     >
       <div className="flex flex-col items-center gap-3 md:flex-row md:gap-5 ">
-        <h2 className="whitespace-nowrap text-3xl font-bold text-primary-700 xs:text-3.2xl">
-          دربـاره چـادرمـلـو
+        <h2 className="whitespace-nowrap text-3xl font-bold text-primary-900 xs:text-3.2xl">
+          دربـاره دراپ
         </h2>
 
         <div className=" bg-primary-400 md:h-28 md:w-[2px] " />
         <p className="text-justify leading-8 md:leading-7">
           {enToFaNumber(
-            "شرکت معدنی و صنعتی چادرملو در خرداد ماه 1371 تحت شماره 2257 در دفتر ثبت شرکتهای شهرستان یزد به ثبت رسیده است. سپس به موجب مصوبه مجمع عمومی فوق العاده مورخ 16/8/1377 مرکز شرکت به تهران منتقل و به شماره 145857 در اداره کل ثبت شرکتها و موسسات غیر تجاری تهران به ثبت رسیده است."
+            "شرکت معدنی و صنعتی دراپ در خرداد ماه 1371 تحت شماره 2257 در دفتر ثبت شرکتهای شهرستان یزد به ثبت رسیده است. سپس به موجب مصوبه مجمع عمومی فوق العاده مورخ 16/8/1377 مرکز شرکت به تهران منتقل و به شماره 145857 در اداره کل ثبت شرکتها و موسسات غیر تجاری تهران به ثبت رسیده است."
           )}{" "}
           <br />
           {enToFaNumber(
-            "دفتر مرکزی شرکت در تهران، خیابان ولیعصر بالاتر از ظفر، بلوار اسفندیار، پلاک 66 واقع است و شرکت فاقد شعبه می باشد. مجتمع معدنی و صنعتی چادرملو در استان یزد، 180 کیلومتری شمال شرقی شهر یزد، حاشیه کویر ساغند قرار دارد."
+            "دفتر مرکزی شرکت در تهران، خیابان ولیعصر بالاتر از ظفر، بلوار اسفندیار، پلاک 66 واقع است و شرکت فاقد شعبه می باشد. مجتمع معدنی و صنعتی دراپ در استان یزد، 180 کیلومتری شمال شرقی شهر یزد، حاشیه کویر ساغند قرار دارد."
           )}
         </p>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 text-white md:grid-cols-2">
-        <div className="rounded-card-border-sm md:rounded-card-border-lg bg-primary-700 bg-cardboard_box bg-auto bg-bottom bg-no-repeat p-6 md:bg-none">
+        <div className="rounded-card-border-sm bg-primary-900 bg-cardboard_box bg-auto bg-bottom bg-no-repeat p-6 md:rounded-card-border-lg md:bg-none">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="cardboard_box" size="large" />}
@@ -196,7 +196,7 @@ const AboutApp = () => {
           </div>
         </div>
 
-        <div className="rounded-card-border-sm md:rounded-card-border-lg bg-secondary-900 bg-steering_wheel bg-auto bg-bottom bg-no-repeat p-6 md:bg-none ">
+        <div className="rounded-card-border-sm bg-secondary-700 bg-steering_wheel bg-auto bg-bottom bg-no-repeat p-6 md:rounded-card-border-lg md:bg-none ">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-3">
             <div className="flex items-center justify-center gap-2 md:justify-start">
               {!isTablet && <SvgSPrite icon="steering_wheel" size="large" />}
@@ -223,16 +223,16 @@ const AboutApp = () => {
 const AppMobileScreens = () => {
   return (
     <div className={`bg-white py-10 ${PADDING_LAYOUT}`}>
-      <h3 className="mb-10 text-center  text-3xl font-bold text-primary-700 xs:text-3.2xl">
+      <h3 className="mb-10 text-center  text-3xl font-bold text-primary-900 xs:text-3.2xl">
         بـخـش‌هـای اپـلـیـکـیـشـن
       </h3>
 
       <div className="grid grid-cols-12 gap-5">
         <div className="col-span-12 lg:col-span-5">
           <div
-            className=" rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden bg-primary-700
-      px-6 pt-6 text-white before:absolute before:bottom-[-110px] before:right-[-110px] before:h-[200px] before:w-[200px] 
-      before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 md:before:bottom-[-170px] md:before:right-[-125px] md:before:h-[300px] md:before:w-[300px]
+            className=" relative h-full overflow-hidden rounded-card-border-sm bg-primary-900 px-6
+      pt-6 text-white before:absolute before:bottom-[-110px] before:right-[-110px] before:h-[200px] before:w-[200px] before:rounded-full 
+      before:border-[40px] before:border-solid before:border-primary-800 md:rounded-card-border-lg md:before:bottom-[-170px] md:before:right-[-125px] md:before:h-[300px] md:before:w-[300px]
        md:before:border-[60px] "
           >
             <div className="relative z-10 flex h-full gap-4 md:block">
@@ -258,17 +258,17 @@ const AppMobileScreens = () => {
         </div>
         <div className="col-span-12 lg:col-span-7">
           <div
-            className=" before:border-27343c0d rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden
-      bg-gray-50 px-6 before:absolute before:bottom-0 before:left-[-118px]
-      before:right-auto before:top-[-124px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid
+            className=" before:border-27343c0d relative h-full overflow-hidden rounded-card-border-sm bg-gray-50
+      px-6 before:absolute before:bottom-0 before:left-[-118px] before:right-auto
+      before:top-[-124px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid md:rounded-card-border-lg
       md:before:bottom-0 md:before:left-0 md:before:right-[-162px] md:before:top-0 md:before:h-full md:before:w-[300px]
       md:before:border-[60px] "
           >
             <div className="relative z-10 mr-auto flex h-full w-full flex-col items-center justify-between gap-4 md:w-4/5 md:flex-row ">
               <h5 className="float-none flex flex-wrap justify-center whitespace-nowrap pt-5 text-center text-lg font-bold xs:w-full md:float-right md:w-48 md:pt-3 md:text-start md:text-4xl">
-                <span>هرلحظه از </span>
-                <span> وضعیت بار </span>
-                <span>باخبر باش </span>
+                <span> هـرلـحـظه از </span>
+                <span> وضعیت بـار </span>
+                <span> بـاخـبـر باش </span>
               </h5>
               <div className="relative float-none h-full md:float-left">
                 <Image
@@ -287,10 +287,10 @@ const AppMobileScreens = () => {
       <div className="mt-5 grid grid-cols-12 gap-5">
         <div className="order-2 col-span-12 lg:order-1 lg:col-span-7">
           <div
-            className=" before:border-27343c0d rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden
-      bg-gray-50 px-6 before:absolute before:bottom-auto before:left-[50%]
-      before:top-[50%] before:h-full before:w-[230px] before:-translate-x-1/2 before:rounded-full
-      before:border-[60px] before:border-solid md:before:bottom-0 md:before:left-[-162px]
+            className=" before:border-27343c0d relative h-full overflow-hidden rounded-card-border-sm bg-gray-50
+      px-6 before:absolute before:bottom-auto before:left-[50%] before:top-[50%]
+      before:h-full before:w-[230px] before:-translate-x-1/2 before:rounded-full before:border-[60px]
+      before:border-solid md:rounded-card-border-lg md:before:bottom-0 md:before:left-[-162px]
       md:before:top-0 md:before:w-[300px] md:before:-translate-x-0"
           >
             <div className="relative z-10 ml-auto flex h-full w-full flex-col-reverse items-center justify-between gap-4 md:w-4/5 md:flex-row ">
@@ -313,9 +313,9 @@ const AppMobileScreens = () => {
         </div>
         <div className="order-1 col-span-12 lg:order-2 lg:col-span-5">
           <div
-            className=" rounded-card-border-sm md:rounded-card-border-lg relative h-full overflow-hidden bg-secondary-900
-      px-6 pt-6 text-white before:absolute before:right-[-100px] before:top-[-125px] before:h-[200px] before:w-[200px] 
-      before:rounded-full before:border-[40px] before:border-solid before:border-secondary-800 md:before:right-[-125px] md:before:top-[-170px] md:before:h-[300px] md:before:w-[300px]
+            className=" relative h-full overflow-hidden rounded-card-border-sm bg-secondary-700 px-6
+      pt-6 text-white before:absolute before:right-[-100px] before:top-[-125px] before:h-[200px] before:w-[200px] before:rounded-full 
+      before:border-[40px] before:border-solid before:border-secondary-800 md:rounded-card-border-lg md:before:right-[-125px] md:before:top-[-170px] md:before:h-[300px] md:before:w-[300px]
        md:before:border-[60px] "
           >
             <div className="flw relative z-10 flex justify-between gap-7 md:gap-3">
@@ -348,10 +348,10 @@ const CostEstimateSec = () => {
   return (
     <div
       className={`
-          relative flex items-center overflow-hidden bg-primary-700 py-16 text-white
-          before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-600 before:content-none after:absolute 
+          relative flex items-center overflow-hidden bg-primary-900 py-16 text-white
+          before:absolute before:left-[-100px] before:top-[-100px] before:h-[200px] before:w-[200px] before:rounded-full before:border-[40px] before:border-solid before:border-primary-800 before:content-none after:absolute 
           after:bottom-[-175px] after:right-[-70px] after:h-[300px] after:w-[300px] after:rounded-full 
-          after:border-[60px] after:border-solid after:border-primary-600 md:before:content-['""'] md:after:bottom-[-125px] 
+          after:border-[60px] after:border-solid after:border-primary-800 md:before:content-['""'] md:after:bottom-[-125px] 
           md:after:right-[-100px] md:after:h-[200px] md:after:w-[200px] md:after:border-[40px]
           ${PADDING_LAYOUT}
       `}
@@ -359,11 +359,11 @@ const CostEstimateSec = () => {
       <div className="relative z-10 flex w-full flex-col items-center justify-between gap-5  md:flex-row md:text-start">
         <div className="">
           <h4 className="mb-2 gap-2  text-center text-3xl font-bold leading-[3rem] md:text-start md:text-3xl">
-            هــنــوز بــرای اسـتـفــاده از چادرملو تردید دارید؟
+            هــنــوز بــرای اسـتـفــاده از دراپ تردید دارید؟
           </h4>
           <h6 className="text-center text-xl font-light">
             شما می‌تـوانید با مشخص کردن مبدا و مقصد و وزن بار خود تخمین هزینه
-            چـادرمـلـو را در لحظه مشاهده کنید.
+            دراپ را در لحظه مشاهده کنید.
           </h6>
         </div>
 

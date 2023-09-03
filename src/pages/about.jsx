@@ -12,11 +12,11 @@ const About = () => {
   return (
     <>
       <Head>
-        <title> چادرملو - درباره ما</title>
+        <title> دراپ - درباره ما</title>
       </Head>
 
       <div className={`bg-white py-20 pt-28 ${PADDING_LAYOUT}`}>
-        <h3 className="mb-12 text-center text-3.2xl font-bold text-primary-700">
+        <h3 className="mb-12 text-center text-3.2xl font-bold text-primary-900">
           دربـاره‌مـا
         </h3>
 

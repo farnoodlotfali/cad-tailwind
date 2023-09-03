@@ -15,7 +15,7 @@ const TextAreaInput = (props) => {
               !!props?.error
                 ? "border-red-500"
                 : focused
-                ? "border-primary-700"
+                ? "border-primary-900"
                 : "border-primary-light"
             }   
             ${props?.labelClassName || ""}`}

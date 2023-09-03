@@ -36,6 +36,7 @@ const TextInput = (props) => {
           {...props?.register}
           onFocus={onFocus}
           onBlur={onBlur}
+          readOnly={props?.readOnly}
           className={`w-full ${props?.inputClassName || ""}`}
         />
       </label>
